@@ -40,6 +40,22 @@
           </button>
         </div>
       </div>
+      <h2>Sound Control</h2>
+      <audio controls>
+        <source
+          src="{{ url_for('static', filename='AMCF440MF40.wav') }}"
+          type="audio/wav"
+        />
+        <source src="horse.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
+      <a class="btn btn-info" href="#" onclick="play()"
+        >Play AM (440Hz, 40Hz)</a
+      >
+      <a class="btn btn-info" href="#" onclick="play()"
+        >Play AM (440Hz, 40Hz)</a
+      >
     </div>
   </body>
 
