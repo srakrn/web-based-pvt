@@ -25,7 +25,7 @@ time.sleep(10)
 while True:
     period = random.triangular(3, 7)
     before_time = datetime.datetime.now()
-    s.emit("control", {"to": "pvt", "action": "start", "duration": 500})
+    s.emit("control", {"to": "pvt", "action": "start", "duration": 1000})
     print("Transmitted")
     received = False
     while not received:
