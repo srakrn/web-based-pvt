@@ -26,12 +26,23 @@
         background: pink;
         border-radius: 50%;
       }
+      #audio {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 256px;
+        height: 256px;
+        transform: translate(-50%, -50%);
+      }
     </style>
   </head>
 
   <body>
     <div class="center">
       <div id="circle"></div>
+      <div id="audio">
+          <img src="{{url_for('static', filename='volume-high.png')}}"></img>
+      </div>
     </div>
   </body>
 </html>
