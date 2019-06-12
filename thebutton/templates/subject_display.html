@@ -57,10 +57,15 @@
   <script type="text/javascript">
     const socket = io("http://localhost:8888");
     socket.on("screen", function(data) {
-      if (data == "start") {
+      console.log(data);
+      action = data["action"];
+      if (action == "show") {
         $("#circle").show();
+        setTimeout(function() {
+          $("#circle").hide();
+        }, data["duration"]);
       }
-      if (data == "tapped") {
+      if (action == "tapped") {
         $("#circle").hide();
       }
     });
