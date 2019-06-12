@@ -10,6 +10,7 @@ from flask import (
 )
 from . import pvtdisplay
 from .. import socketio
+from flask_socketio import send, emit
 
 
 @pvtdisplay.route("/display", methods=["GET"])
@@ -22,6 +23,7 @@ def display_button():
     return render_template("tapper.html")
 
 
-@socketio.on("response")
+@socketio.on("button")
 def test_message(message):
-    print("Hello")
+    print(message)
+    emit(message)
