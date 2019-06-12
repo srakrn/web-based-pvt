@@ -31,6 +31,7 @@
         transform: translate(-50%, -50%);
         background: pink;
         border-radius: 50%;
+        display: none;
       }
       #audio {
         position: absolute;
@@ -56,6 +57,9 @@
   <script type="text/javascript">
     const socket = io("http://localhost:8888");
     socket.on("screen", function(data) {
+      if (data == "start") {
+        $("#circle").show();
+      }
       if (data == "tapped") {
         $("#circle").hide();
       }

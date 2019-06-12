@@ -29,3 +29,10 @@ def test_message(message):
     if message == "tapped":
         print("Tapped, emitting screen")
         emit("screen", "tapped", broadcast=True)
+
+
+@socketio.on("control")
+def control(message):
+    print(message)
+    if message == "pvt":
+        emit("screen", "start", broadcast=True)
