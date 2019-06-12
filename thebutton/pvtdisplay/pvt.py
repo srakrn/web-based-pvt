@@ -17,6 +17,11 @@ def display_screen():
     return render_template("subject_display.html")
 
 
+@pvtdisplay.route("/button", methods=["GET"])
+def display_button():
+    return render_template("tapper.html")
+
+
 @socketio.on("response")
 def test_message(message):
     print("Hello")
