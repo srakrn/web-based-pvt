@@ -33,7 +33,7 @@ def test_message(message):
     print(message)
     if message == "tapped":
         print("Tapped, emitting screen")
-        emit("screen", "tapped", broadcast=True)
+        emit("screen", {"action": "tapped"}, broadcast=True)
 
 
 @socketio.on("control")
