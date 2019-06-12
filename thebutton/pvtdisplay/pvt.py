@@ -32,7 +32,6 @@ def display_control():
 def test_message(message):
     print(message)
     if message == "tapped":
-        print("Tapped, emitting screen")
         emit("screen", {"action": "tapped"}, broadcast=True)
 
 
