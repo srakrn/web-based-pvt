@@ -22,9 +22,24 @@
       <h1>Control Panel</h1>
       <hr />
       <h2>PVT</h2>
-      <a class="btn btn-danger" href="#" onclick="sendPvtStimulate()"
-        >Stimulate now</a
-      >
+      <h3>Stimulate</h3>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Stimulation period (ms)"
+          id="stimulation-period"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-danger"
+            type="button"
+            onclick="sendPvtStimulate()"
+          >
+            Stimulate
+          </button>
+        </div>
+      </div>
     </div>
   </body>
 
@@ -35,7 +50,7 @@
       socket.emit("control", {
         to: "pvt",
         action: "start",
-        duration: 500
+        duration: parseInt($("#stimulation-period").val())
       });
     }
   </script>
