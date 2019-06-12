@@ -26,4 +26,6 @@ def display_button():
 @socketio.on("button")
 def test_message(message):
     print(message)
-    emit(message)
+    if message == "tapped":
+        print("Tapped, emitting screen")
+        emit("screen", "tapped", broadcast=True)

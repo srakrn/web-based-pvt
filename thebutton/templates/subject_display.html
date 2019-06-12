@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Subject display</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
     <script src="{{url_for('static', filename='socket.io.js')}}"></script>
     <style type="text/css">
       body {
@@ -35,6 +39,7 @@
         width: 256px;
         height: 256px;
         transform: translate(-50%, -50%);
+        display: none;
       }
     </style>
   </head>
@@ -43,12 +48,17 @@
     <div class="center">
       <div id="circle"></div>
       <div id="audio">
-          <img src="{{url_for('static', filename='volume-high.png')}}"></img>
+        <img src="{{url_for('static', filename='volume-high.png')}}" />
       </div>
     </div>
   </body>
 
   <script type="text/javascript">
-    const socket = io("http://localhost:5000");
+    const socket = io("http://localhost:8888");
+    socket.on("screen", function(data) {
+      if (data == "tapped") {
+        $("#circle").hide();
+      }
+    });
   </script>
 </html>

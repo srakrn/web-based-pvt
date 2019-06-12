@@ -37,7 +37,8 @@
   </body>
 
   <script type="text/javascript">
-    const socket = io("http://localhost:5000");
+    const socket = io("http://localhost:8888");
+    socket.emit("button", "connected");
     $("#center").click(function() {
       socket.emit("button", "tapped");
     });
