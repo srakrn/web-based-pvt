@@ -8,11 +8,15 @@ from flask import (
     session,
     url_for,
 )
+from . import pvtdisplay
+from .. import socketio
 
-bp = Blueprint("pvt", __name__, url_prefix="/pvt")
 
-
-@bp.route("/display", methods=["GET"])
+@pvtdisplay.route("/display", methods=["GET"])
 def display_screen():
     return render_template("subject_display.html")
 
+
+@socketio.on("response")
+def test_message(message):
+    print("Hello")

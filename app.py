@@ -1,13 +1,6 @@
-import os
-from flask import Flask
-from flask_socketio import SocketIO
-import pvt
+from thebutton import create_app, socketio
 
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_mapping(SECRET_KEY="dev")
-app.register_blueprint(pvt.bp)
-
-socketio = SocketIO(app)
+app = create_app(debug=True)
 
 if __name__ == "__main__":
     socketio.run(app)
