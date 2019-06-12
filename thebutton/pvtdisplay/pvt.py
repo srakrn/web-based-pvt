@@ -18,9 +18,14 @@ def display_screen():
     return render_template("subject_display.html")
 
 
-@pvtdisplay.route("/button", methods=["GET"])
+@pvtdisplay.route("/button", methods=["get"])
 def display_button():
     return render_template("tapper.html")
+
+
+@pvtdisplay.route("/control", methods=["get"])
+def display_control():
+    return render_template("control.html")
 
 
 @socketio.on("button")
@@ -34,5 +39,11 @@ def test_message(message):
 @socketio.on("control")
 def control(message):
     print(message)
-    if message == "pvt":
-        emit("screen", "start", broadcast=True)
+    to, action = message["to"], message["action"]
+    if to == "pvt":
+        if action == "start":
+            emit(
+                "screen",
+                {"action": "show", "duration": message["duration"]},
+                broadcast=True,
+            )
